@@ -15,6 +15,7 @@
 1.  mkdir Screens
 2.  touch Screens/Home.js
 3.  touch Screens/Detail.js
+4.  touch Screens/Setting.js
 
 
 # Guide to solve issue listed at 9 and 10
