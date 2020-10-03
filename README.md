@@ -17,6 +17,20 @@
 3.  touch Screens/Detail.js
 4.  touch Screens/Setting.js
 
+# Styling
+1.  npm install styled-components
+2.  got error
+    - Unable to resolve "react-native-screens" from "node_modules/react-navigation-tabs/lib/module/navigators/createBottomTabNavigator.js"
+3.  npm install --save react-native-gesture-handler react-native-reanimated react-native-screens
+4.  npm install
+5.  npm audit fix
+6.  error fixed
+
+# Adding Listing Component
+1.  mkdir Components
+2.  touch Components/ListingItem.js
+
+
 
 # Guide to solve issue listed at 9 and 10
 Use below steps, this will work 100%.

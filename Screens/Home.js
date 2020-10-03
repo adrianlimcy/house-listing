@@ -1,5 +1,18 @@
 import React from 'react'
-import { FlatList, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { FlatList, View } from 'react-native'
+import styled from 'styled-components/native'
+import ListingItem from '../Components/ListingItem'
+
+const ListingsWrapper = styled(View)`
+flex: 1;
+background-color: #fff;
+align-items: center;
+justify-content: center;
+`
+const Listings = styled(FlatList)`
+width: 100%;
+padding: 5%
+`
 
 const Home = ({navigation}) => {
 
@@ -27,29 +40,20 @@ const Home = ({navigation}) => {
     }, [])
 
     return (
-        <View style={styles.container}>
+        <ListingsWrapper>
             {!loading && !error &&
-                <FlatList
+                <Listings
                     data={data}
                     keyExtractor={item => String(item.id)}
-                    renderItem={({item})=>(
-                        <TouchableOpacity onPress={()=> navigation.navigate('Detail', {item})}>
-                            <Text>{item.title}</Text>
-                        </TouchableOpacity>
-                    )}
+                    renderItem={({item})=>
+                        <ListingItem item={item} navigation={navigation} />
+                    }
                 />
             }
-        </View>
+        </ListingsWrapper>
     )   
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-})
+
 
 export default Home
