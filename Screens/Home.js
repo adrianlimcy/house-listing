@@ -1,12 +1,47 @@
 import React from 'react'
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { FlatList, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 
-const Home = ({navigation}) => (
-    <View style={styles.container}>
-        <Text>This is the Home page</Text>
-        <Button onPress={()=> navigation.navigate('Detail')} title='Go t0 Detail' />
-    </View>
-)
+const Home = ({navigation}) => {
+
+    const [loading, setLoading ] = React.useState(true)
+    const [error, setError] = React.useState('')
+    const [data, setData] = React.useState([]) 
+
+    const fetchAPI = async () => {
+        try {
+            const data = await fetch ('https://my-json-server.typicode.com/PacktPublishing/React-Projects/listings')
+            const dataJSON = await data.json()
+
+            if (dataJSON) {
+                setData(dataJSON)
+                setLoading(false)
+            }
+        } catch (error) {
+            setLoading(false)
+            setError(error.message)
+        }
+    }
+
+    React.useEffect( ()=> {
+        fetchAPI()
+    }, [])
+
+    return (
+        <View style={styles.container}>
+            {!loading && !error &&
+                <FlatList
+                    data={data}
+                    keyExtractor={item => String(item.id)}
+                    renderItem={({item})=>(
+                        <TouchableOpacity onPress={()=> navigation.navigate('Detail', {item})}>
+                            <Text>{item.title}</Text>
+                        </TouchableOpacity>
+                    )}
+                />
+            }
+        </View>
+    )   
+}
 
 const styles = StyleSheet.create({
     container: {

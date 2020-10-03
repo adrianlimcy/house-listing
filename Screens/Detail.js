@@ -1,12 +1,16 @@
 import React from 'react'
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
-const Detail = ({navigation}) => (
-    <View style={styles.container}>
-        <Text>This is the Detail page</Text>
-        <Button onPress={()=> navigation.navigate('Home')} title='Go Home' />
-    </View>
-)
+const Detail = ({navigation}) => {
+    const item = navigation.getParam('item', {})
+
+    return (
+        <View style={styles.container}>
+            <Text>{item.title}</Text>
+        </View>
+    )
+    
+}
 
 const styles = StyleSheet.create ({
     container: {
