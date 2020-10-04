@@ -64,3 +64,6 @@ rm package-lock.json
 expo upgrade
 
 npm start -c
+
+# Guide to add into gitignore if it was accidentally added in
+Run git reset name_of_file to unstage the file and keep it. In case you want to also remove the given file from the repository (after pushing), use git rm --cached name_of_file.
