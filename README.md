@@ -30,6 +30,11 @@
 1.  mkdir Components
 2.  touch Components/ListingItem.js
 
+# Platform Styling
+1.  mkdir Components/Listing
+2.  touch Components/Listing/ListingDetail.android.js
+3.  touch Components/Listing/ListingDetail.ios.js
+
 
 
 # Guide to solve issue listed at 9 and 10
